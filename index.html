@@ -64,14 +64,6 @@
             opacity: 0.15;
         }
 
-        /* Particles */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
         /* Navigation */
         nav {
             position: fixed;
@@ -173,6 +165,18 @@
             z-index: 1;
         }
 
+        /* Profile picture in hero */
+        .hero-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--neon-green);
+            box-shadow: var(--strong-glow);
+            object-fit: cover;
+            margin: 0 auto 25px auto;
+            display: block;
+        }
+
         .hero-content h1 {
             font-size: 5rem;
             color: var(--neon-green);
@@ -182,15 +186,15 @@
         }
 
         @keyframes glitchText {
-            0%, 90%, 100% { 
+            0%, 90%, 100% {
                 transform: translate(0);
                 text-shadow: var(--strong-glow);
             }
-            92% { 
+            92% {
                 transform: translate(-4px, 4px);
                 text-shadow: -4px 4px 0 #ff0000, 4px -4px 0 #00ff00;
             }
-            94% { 
+            94% {
                 transform: translate(4px, -4px);
                 text-shadow: 4px -4px 0 #ff0000, -4px 4px 0 #00ff00;
             }
@@ -263,6 +267,87 @@
             color: var(--black);
             box-shadow: var(--strong-glow);
             transform: scale(1.05);
+        }
+
+        /* CONNECT STRIP UNDER HERO */
+        .connect-strip {
+            max-width: 1400px;
+            margin: 0 auto 80px auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .connect-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid var(--neon-green);
+            box-shadow: var(--glow);
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .connect-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .connect-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-green);
+            box-shadow: var(--glow);
+            object-fit: cover;
+        }
+
+        .connect-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .connect-tagline {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .connect-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .connect-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            background: #050505;
+        }
+
+        .connect-link span.icon {
+            font-size: 1.2rem;
+        }
+
+        .connect-link span.username {
+            opacity: 0.85;
+        }
+
+        .connect-link:hover {
+            box-shadow: var(--strong-glow);
+            transform: translateY(-3px);
+            background: var(--neon-green);
+            color: var(--black);
         }
 
         /* Sections */
@@ -345,6 +430,7 @@
         .about-text {
             line-height: 2;
             font-size: 1.1rem;
+            white-space: pre-line;
         }
 
         .about-text::before {
@@ -781,6 +867,11 @@
             section {
                 padding: 0 20px;
             }
+
+            .connect-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -818,6 +909,8 @@
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
+            <!-- Profile picture -->
+            <img src="profile.jpg" alt="Kaushal Kishore" class="hero-avatar">
             <h1>KAUSHAL KISHORE</h1>
             <div class="typing-text">
                 <span class="terminal-line"></span>
@@ -830,6 +923,37 @@
         </div>
     </section>
 
+    <!-- CONNECT STRIP -->
+    <div class="connect-strip">
+        <div class="connect-card">
+            <div class="connect-left">
+                <img src="profile.jpg" alt="Kaushal avatar" class="connect-avatar">
+                <div>
+                    <div class="connect-name">@kaushalacts</div>
+                    <div class="connect-tagline">Connect with me across platforms</div>
+                </div>
+            </div>
+            <div class="connect-links">
+                <a href="https://linkedin.com/in/kaushalacts" target="_blank" class="connect-link">
+                    <span class="icon">💼</span>
+                    <span class="username">LinkedIn · kaushalacts</span>
+                </a>
+                <a href="https://github.com/kaushalacts" target="_blank" class="connect-link">
+                    <span class="icon">💻</span>
+                    <span class="username">GitHub · kaushalacts</span>
+                </a>
+                <a href="https://hashnode.com/@kaushalacts" target="_blank" class="connect-link">
+                    <span class="icon">📝</span>
+                    <span class="username">Hashnode · @kaushalacts</span>
+                </a>
+                <a href="mailto:kaushalkishoremnt2000@gmail.com" class="connect-link">
+                    <span class="icon">📧</span>
+                    <span class="username">Email · kaushalkishoremnt2000</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- About -->
     <section id="about">
         <h2 class="section-title">ABOUT_ME</h2>
@@ -841,9 +965,7 @@
                     <div class="terminal-button"></div>
                 </div>
                 <div class="about-text">
-DevOps Engineer with 1 year and 10 months of experience in cloud infrastructure, CI/CD automation, and container orchestration.
-
-Certified Azure Administrator & DevOps Engineer specializing in multi-cloud environments (AWS, Azure), infrastructure as code, and DevSecOps practices.
+DevOps Engineer with 1 year and 10 months of experience in cloud infrastructure, CI/CD automation, and container orchestration. Certified Azure Administrator & DevOps Engineer specializing in multi-cloud environments (AWS, Azure), infrastructure as code, and DevSecOps practices.
 
 Currently exploring Agentic AI, RAG systems, and MLOps integration.
                 </div>
@@ -1014,9 +1136,9 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                     <span class="project-status">PRODUCTION</span>
                 </div>
                 <p class="project-description">
-                    Enterprise-grade CI/CD pipeline for 3-tier Node.js application with integrated security 
-                    scanning, code quality analysis, and GitOps deployment to AWS EKS. Achieved 85% faster 
-                    deployment time with <2% failure rate.
+                    Enterprise-grade CI/CD pipeline for 3-tier Node.js application with integrated security
+                    scanning, code quality analysis, and GitOps deployment to AWS EKS. Achieved 85% faster
+                    deployment time with &lt;2% failure rate.
                 </p>
                 <div class="project-tech skill-tags">
                     <span class="skill-tag">GitLab CI/CD</span>
@@ -1037,7 +1159,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                     <span class="project-status">ACTIVE</span>
                 </div>
                 <p class="project-description">
-                    Reusable Terraform modules for provisioning infrastructure across AWS, Azure, and GCP. 
+                    Reusable Terraform modules for provisioning infrastructure across AWS, Azure, and GCP.
                     Includes automated compliance checks, cost optimization, and security best practices.
                 </p>
                 <div class="project-tech skill-tags">
@@ -1058,7 +1180,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                     <span class="project-status">ACTIVE</span>
                 </div>
                 <p class="project-description">
-                    Automated security scanning and policy enforcement for Kubernetes clusters using OPA, 
+                    Automated security scanning and policy enforcement for Kubernetes clusters using OPA,
                     Falco, and Trivy. Implements runtime security monitoring and vulnerability remediation.
                 </p>
                 <div class="project-tech skill-tags">
@@ -1079,7 +1201,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                     <span class="project-status">COMPLETED</span>
                 </div>
                 <p class="project-description">
-                    Complete observability solution using Prometheus, Grafana, and ELK stack for monitoring, 
+                    Complete observability solution using Prometheus, Grafana, and ELK stack for monitoring,
                     logging, and alerting across microservices architecture.
                 </p>
                 <div class="project-tech skill-tags">
@@ -1112,21 +1234,21 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                     <div class="contact-icon">💼</div>
                     <div>
                         <div style="font-size: 1.2rem; margin-bottom: 5px;">LINKEDIN</div>
-                        <a href="https://linkedin.com/in/kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">linkedin.com/in/kaushalacts</a>
+                        <a href="https://linkedin.com/in/kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">@kaushalacts</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">💻</div>
                     <div>
                         <div style="font-size: 1.2rem; margin-bottom: 5px;">GITHUB</div>
-                        <a href="https://github.com/kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">github.com/kaushalacts</a>
+                        <a href="https://github.com/kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">@kaushalacts</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📝</div>
                     <div>
                         <div style="font-size: 1.2rem; margin-bottom: 5px;">BLOG</div>
-                        <a href="https://hashnode.com/@kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">hashnode.com/@kaushalacts</a>
+                        <a href="https://hashnode.com/@kaushalacts" target="_blank" style="color: var(--neon-green); text-decoration: none; opacity: 0.8;">@kaushalacts</a>
                     </div>
                 </div>
             </div>
@@ -1185,7 +1307,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
         document.addEventListener('mousemove', (e) => {
             cursorDot.style.left = e.clientX + 'px';
             cursorDot.style.top = e.clientY + 'px';
-            
+
             setTimeout(() => {
                 cursorRing.style.left = e.clientX - 17 + 'px';
                 cursorRing.style.top = e.clientY - 17 + 'px';
@@ -1212,7 +1334,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
 
         const letters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
         const fontSize = 16;
-        const columns = canvas.width / fontSize;
+        let columns = canvas.width / fontSize;
 
         const drops = [];
         for (let i = 0; i < columns; i++) {
@@ -1242,6 +1364,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            columns = canvas.width / fontSize;
         });
 
         // Typing Effect
@@ -1282,6 +1405,7 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1323,11 +1447,9 @@ Currently exploring Agentic AI, RAG systems, and MLOps integration.
                 return;
             }
 
-            // Create mailto link
             const mailtoLink = `mailto:kaushalkishoremnt2000@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
             window.location.href = mailtoLink;
 
-            // Clear form
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('subject').value = '';
